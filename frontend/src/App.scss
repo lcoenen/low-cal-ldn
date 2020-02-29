@@ -1,0 +1,23 @@
+@import '~materialize-css/sass/materialize';
+
+@import './styles/palette.scss';
+
+body {
+  background-color: $background-color;
+	color: $main-color;
+}
+
+.--warn {
+	color: $warn-color;
+}
+
+.--accent {
+	color: $accent-color;
+}
+
+.container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 90;
+}

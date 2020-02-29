@@ -1,0 +1,10 @@
+{
+  "name": "low-cal-ldn",
+  "version": "1.0.0",
+  "description": "Tendermint-based artefact geo-publishing",
+  "repository": "https://github.com/lcoenen/low-cal-ldn",
+  "author": "Loic Coenen",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "workspaces": ["@low-cal/frontend", "@low-cal/backend"]
+}

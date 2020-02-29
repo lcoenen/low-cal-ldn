@@ -1,0 +1,10 @@
+@import '../styles/palette.scss';
+
+.navbar {
+	background-color: $accent-color;
+}
+
+.navbar__logo {
+	margin-left: 48px;
+	height: 48px;
+}
