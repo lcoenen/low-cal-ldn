@@ -30,8 +30,13 @@ tendermint.start().then(async (appInfo) => {
 	})
 
 	server.post('/artefacts', async (req, res) => {
-		await send(req.body.artefact)	
-		res.send('sent');
+		try {
+			console.log('trying with ', req.body)
+			await send(req.body.artefact)	
+			res.send('sent');
+		} catch(err) {
+			console.warn(err);	
+		}
 	})
 
 	server.listen(2999, function () {

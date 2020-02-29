@@ -1,0 +1,15 @@
+.map {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.map__inside {
+	height: 600px;
+}
+
+.leaflet-container {
+	height: 600px;
+	margin: 0 auto;
+}

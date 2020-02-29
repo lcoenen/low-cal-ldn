@@ -1,10 +1,11 @@
 @import '~materialize-css/sass/materialize';
-
 @import './styles/palette.scss';
 
 body {
-  background-color: $background-color;
+	font-family: 'Open Sans', Arial;
+	background-color: $background-color;
 	color: $main-color;
+	font-family: 'Roboto';
 }
 
 .--warn {
@@ -15,9 +16,44 @@ body {
 	color: $accent-color;
 }
 
-.container {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 90;
+.main {
+	display: flex;
+	justify-content: space-around;
+	margin: 16px;
+}
+
+.main__left-pane {
+	width: 40%;
+	height: 100%;
+}
+
+.main__right-pane {
+	width: 40%;
+	height: calc(90vh - 40px);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Open Sans';
+	color: $accent-color;
+	padding-bottom: 8px;
+	border-bottom: 2px solid $accent-color;
+}
+
+input,
+textarea {
+	color: $main-color;
+	font-size: 16px;
+}
+
+textarea {
+	padding: 8px;
+}
+
+label {
+	font-size: 16px;
+	color: $main-color;
+	padding-bottom: 8px;
 }

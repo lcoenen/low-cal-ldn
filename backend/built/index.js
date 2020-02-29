@@ -77,18 +77,27 @@ tendermint.start().then( /*#__PURE__*/function () {
                   while (1) {
                     switch (_context2.prev = _context2.next) {
                       case 0:
-                        _context2.next = 2;
+                        _context2.prev = 0;
+                        console.log('trying with ', req.body);
+                        _context2.next = 4;
                         return send(req.body.artefact);
 
-                      case 2:
+                      case 4:
                         res.send('sent');
+                        _context2.next = 10;
+                        break;
 
-                      case 3:
+                      case 7:
+                        _context2.prev = 7;
+                        _context2.t0 = _context2["catch"](0);
+                        console.warn(_context2.t0);
+
+                      case 10:
                       case "end":
                         return _context2.stop();
                     }
                   }
-                }, _callee2);
+                }, _callee2, null, [[0, 7]]);
               }));
 
               return function (_x4, _x5) {

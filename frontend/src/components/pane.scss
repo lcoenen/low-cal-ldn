@@ -1,0 +1,17 @@
+@import '../styles/palette.scss';
+
+.pane {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	h2 {
+		font-size: 24px;
+	}
+}
+
+.pane__top {
+	height: 40vh;
+	flex-grow: 1;
+}
+
