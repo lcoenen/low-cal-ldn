@@ -45,7 +45,7 @@ mod my_zome {
     }
 
     #[zome_fn("hc_public")]
-    fn get_artifact(address: Address) -> ZomeApiResult<Option<Entry>> {
-        hdk::get_entry(&address)
+    fn get_artifact_by_adr(address: Address) -> ZomeApiResult<Artifact> {
+        hdk::utils::get_as_type(address)
     }
 }
