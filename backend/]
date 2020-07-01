@@ -55,8 +55,7 @@ mod my_zome {
 
     fn query_all() -> ZomeApiResult<Vec<Artifact>> {
         hdk::query("artifact".into(), 0, 0).map(|y| {
-            y.iter()
-                .cloned()
+            y.iter().cloned())
                 .map(|x| hdk::utils::get_as_type(x).unwrap())
                 .collect()
         })
