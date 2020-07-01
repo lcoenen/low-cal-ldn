@@ -101,3 +101,9 @@ client.call("get_artifacts_around", { coord: [20, 10], radius: 235 })
     .then(r => {
         console.log('client.call("get_artifacts_around", { coord: [20, 10], radius: 235 })', r)
     });
+
+client.call("get_artifacts_by_kind", { kind: "Test" })
+    .catch(e => console.log(e))
+    .then(r => {
+        console.log('client.call("get_artifacts_by_kind", { kind: "Test" })', r)
+    });

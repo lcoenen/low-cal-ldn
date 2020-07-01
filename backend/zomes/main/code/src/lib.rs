@@ -82,4 +82,14 @@ mod my_zome {
                 .collect()
         })
     }
+
+    #[zome_fn("hc_public")]
+    fn get_artifacts_by_kind(kind: String) -> ZomeApiResult<Vec<Artifact>> {
+        query_all().map(|x| {
+            x.iter()
+                .cloned()
+                .filter(|y| y.kind == kind)
+                .collect()
+        })
+    }
 }
