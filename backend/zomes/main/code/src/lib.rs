@@ -64,6 +64,12 @@ mod my_zome {
         hdk::remove_entry(&address)
     }
 
+    #[zome_fn("hc_public")]
+    fn update_artifact_by_adr(artifact: Artifact, address: Address) -> ZomeApiResult<Address> {
+        let artifact = Entry::App("artifact".into(), artifact.into());
+        hdk::update_entry(artifact, &address)
+    }
+
     fn query_all() -> ZomeApiResult<Vec<ArtifactWithAddress>> {
         hdk::query("artifact".into(), 0, 0).map(|y| {
             y.iter()

@@ -97,6 +97,12 @@ client.call("create_artifact", { artifact: art2 })
             .then(r => {
                 console.log('client.call("get_artifact_by_adr", { address: r })', r)
             });
+        art2.metadata.hello = 1
+        client.call("update_artifact_by_adr", { artifact: art2, address: r })
+            .catch(e => console.log(e))
+            .then(r => {
+                console.log('client.call("update_artifact_by_adr", { artifact: art2, address: r })', r)
+            });
     });
 
 client.call("get_all_artifacts")
