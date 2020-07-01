@@ -60,3 +60,19 @@ client.call('create_artifact', { artifact: artifact })
             .catch(e => console.log(e))
             .then(r => console.log(r));
     });
+
+let art2 = artifact
+art2.kind = "Test"
+
+client.call('create_artifact', { artifact: art2 })
+    .catch(e => console.log(e))
+    .then(r => {
+        console.log(r)
+        client.call('get_artifact_by_adr', {address: r})
+            .catch(e => console.log(e))
+            .then(r => console.log(r));
+    });
+
+client.call('get_all_artifacts')
+    .catch(e => console.log(e))
+    .then(r => console.log(r));

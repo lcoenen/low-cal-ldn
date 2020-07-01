@@ -48,4 +48,17 @@ mod my_zome {
     fn get_artifact_by_adr(address: Address) -> ZomeApiResult<Artifact> {
         hdk::utils::get_as_type(address)
     }
+
+    fn query_all() -> ZomeApiResult<Vec<Artifact>> {
+        hdk::query("artifact".into(), 0, 0).map(|y| {
+            y.iter()
+                .map(|x| hdk::utils::get_as_type(x.clone()).unwrap())
+                .collect()
+        })
+    }
+
+    #[zome_fn("hc_public")]
+    fn get_all_artifacts() -> ZomeApiResult<Vec<Artifact>> {
+        query_all()
+    }
 }
