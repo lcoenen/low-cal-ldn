@@ -9,7 +9,7 @@ class Client {
         // JSONRPCClient needs to know how to send a JSON-RPC request.
         // Tell it by passing a function to its constructor. The function must take a JSON-RPC request and send it.
         this.jsonrpcClient = new JSONRPCClient((jsonRPCRequest) =>
-           fetch(url, {
+            fetch(url, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
@@ -41,8 +41,8 @@ class Client {
 }
 
 const URL = "http://localhost:8888/";
-const INSTANCE = 'test-instance';
-const ZOME = 'main';
+const INSTANCE = "test-instance";
+const ZOME = "main";
 
 const client = new Client(URL, INSTANCE, ZOME)
 
@@ -52,27 +52,52 @@ let artifact = {
     metadata: { hello: 0, foo: "bar" },
 }
 
-client.call('create_artifact', { artifact: artifact })
+client.call("create_artifact", { artifact: artifact })
     .catch(e => console.log(e))
     .then(r => {
-        console.log(r)
-        client.call('get_artifact_by_adr', {address: r})
+        console.log('client.call("create_artifact", { artifact: artifact })', r)
+        client.call("get_artifact_by_adr", { address: r })
             .catch(e => console.log(e))
-            .then(r => console.log(r));
+            .then(r => {
+                console.log('client.call("get_artifact_by_adr", { address: r })', r)
+            });
     });
 
 let art2 = artifact
 art2.kind = "Test"
+art2.coord = [20, 10]
 
-client.call('create_artifact', { artifact: art2 })
+client.call("create_artifact", { artifact: art2 })
     .catch(e => console.log(e))
     .then(r => {
-        console.log(r)
-        client.call('get_artifact_by_adr', {address: r})
+        console.log('client.call("create_artifact", { artifact: art2 })', r)
+        client.call("get_artifact_by_adr", { address: r })
             .catch(e => console.log(e))
-            .then(r => console.log(r));
+            .then(r => {
+                console.log('client.call("get_artifact_by_adr", { address: r })', r)
+            });
     });
 
-client.call('get_all_artifacts')
+client.call("get_all_artifacts")
     .catch(e => console.log(e))
-    .then(r => console.log(r));
+    .then(r => {
+        console.log('client.call("get_all_artifacts")', r)
+    });
+
+client.call("get_artifacts_around", { coord: [20, 10], radius: 50 })
+    .catch(e => console.log(e))
+    .then(r => {
+        console.log('client.call("get_artifacts_around", { coord: [20, 10], radius: 50 })', r)
+    });
+
+client.call("get_artifacts_around", { coord: [20, 10], radius: -50 })
+    .catch(e => console.log(e))
+    .then(r => {
+        console.log('client.call("get_artifacts_around", { coord: [20, 10], radius: -50 })', r)
+    });
+
+client.call("get_artifacts_around", { coord: [20, 10], radius: 235 })
+    .catch(e => console.log(e))
+    .then(r => {
+        console.log('client.call("get_artifacts_around", { coord: [20, 10], radius: 235 })', r)
+    });

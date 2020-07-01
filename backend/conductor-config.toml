@@ -12,7 +12,7 @@ test_agent = true
 
 [[dnas]]
 file = '/home/mahmoud/dev/low-cal-ldn/backend/dist/backend.dna.json'
-hash = 'QmWkDmfPNpmzL2NNMRbWBtNyo5i4WhRdggJNJUqPKjJ5dU'
+hash = 'QmRh4vfFhUTmwhH4DNKTJ2PJ7EYppz3iKtiw5AXZJfaRKM'
 id = 'hc-run-dna'
 
 [[instances]]

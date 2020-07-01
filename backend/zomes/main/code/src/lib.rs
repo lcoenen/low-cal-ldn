@@ -10,6 +10,10 @@ pub struct Artifact {
     metadata: serde_json::Value,
 }
 
+fn dist(a0: f64, a1: f64, b0: f64, b1: f64) -> f64 {
+    ((a0 - b0).powi(2) + (a1 - b1).powi(2)).sqrt()
+}
+
 #[zome]
 mod my_zome {
     #[init]
@@ -60,5 +64,22 @@ mod my_zome {
     #[zome_fn("hc_public")]
     fn get_all_artifacts() -> ZomeApiResult<Vec<Artifact>> {
         query_all()
+    }
+
+    #[zome_fn("hc_public")]
+    fn get_artifacts_around(coord: Vec<f64>, radius: f64) -> ZomeApiResult<Vec<Artifact>> {
+        if coord.len() != 2 {
+            return Err(ZomeApiError::Internal("Coord must have 2 floats".into()));
+        }
+        if radius <= 0.0 {
+            return Err(ZomeApiError::Internal("Radius must be positive".into()));
+        }
+
+        query_all().map(|x| {
+            x.iter()
+                .cloned()
+                .filter(|y| dist(coord[0], coord[1], y.coord[0], y.coord[1]).abs() <= radius)
+                .collect()
+        })
     }
 }
